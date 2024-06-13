@@ -9,12 +9,29 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.8.2",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@fontsource/great-vibes": "^5.0.21",
+    "clipboard-copy": "^4.0.1",
+    "crc": "^4.3.2",
+    "dotenv": "^16.4.5",
+    "framer-motion": "^11.2.10",
+    "next": "14.2.4",
+    "qrcode": "^1.5.3",
+    "qrcode.react": "^3.1.0",
     "react": "^18",
+    "react-countdown": "^2.3.5",
     "react-dom": "^18",
-    "next": "14.2.4"
+    "redux": "^5.0.1"
   },
   "devDependencies": {
-    "eslint": "^8",
-    "eslint-config-next": "14.2.4"
+    "@chakra-ui/cli": "^2.4.1",
+    "@typescript-eslint/eslint-plugin": "^7.13.0",
+    "@typescript-eslint/parser": "^7.13.0",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "14.2.4",
+    "eslint-plugin-jsdoc": "^48.2.9",
+    "eslint-plugin-react": "^7.34.2"
   }
 }
