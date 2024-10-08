@@ -4,13 +4,9 @@ import { Box, Flex, Text } from '@chakra-ui/react';
 import { Theme } from '@chakra-ui/react'; // Chakra UI's Theme type
 import theme from '../../theme';
 
-// Define your props for the Header
-interface HeaderProps {
-  theme: any;
-}
 
 // Define the Header component with proper typing
-const Header: React.FC<HeaderProps> = ({ theme }) => (
+export const Header: React.FC<{}> = () => (
   <Flex
     as="header"
     align="center"
@@ -37,7 +33,7 @@ const withHeader = <P extends object>(WrappedComponent: React.ComponentType<P>):
   // HOC that wraps the component with a header
   const withHeaderHoc: React.FC<P> = (props: P) => (
     <>
-      <Header theme={theme} />
+      <Header />
       <Box
         bgImage={
           "https://img.freepik.com/free-vector/vector-seamless-floral-pattern-illustration-horizontally-vertically-repeatable_8130-2711.jpg"
