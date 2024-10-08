@@ -1,11 +1,14 @@
-// pages/GiftList.js
+export const imageUrl = 'images/coffemaker.jpg';
 
-import { Box, Heading, SimpleGrid } from "@chakra-ui/react";
-import GiftCard from "../../../components/gift-card";
+// Function to generate random value between 50 and 200
+/**
+ *
+ */
+function getRandomValue() {
+  return Number.parseFloat('20,02')
+}
 
-const imageUrl = 'images/coffemaker.jpg';
-
-const gifts = [
+export const gifts = [
   {
     id: 1,
     title: "Conjunto de Talheres de Prata",
@@ -70,28 +73,3 @@ const gifts = [
     value: getRandomValue()
   },
 ];
-
-// Function to generate random value between 50 and 200
-/**
- *
- */
-function getRandomValue() {
-  return Number.parseFloat('20,02')
-}
-
-const GiftList = () => {
-  return (
-    <Box pt={8} maxW="800px" mx="auto">
-      <Heading mb={8} textAlign="center" color="brand.black">
-        Lista de presentes
-      </Heading>
-      <SimpleGrid p={"25px"} minChildWidth={"200px"} gap={10}>
-        {gifts.map((gift) => (
-          <GiftCard key={gift.id} {...gift} />
-        ))}
-      </SimpleGrid>
-    </Box>
-  );
-};
-
-export default GiftList;

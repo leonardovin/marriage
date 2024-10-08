@@ -1,16 +1,27 @@
 // components/PixModal.js
 
+import React from 'react'
 import { Modal, ModalOverlay, ModalContent, ModalBody, ModalCloseButton, Image, Center, Heading, Button, Text } from "@chakra-ui/react";
+import generatePixQrCode from "../../utils/payment";
 import QRCode from "qrcode.react";
-import generatePixQrCode from "../../utils/payment/generate-pix-qr";
-import copyToClipboard from "../../utils/text/copy-to-clipboard";
+import copyToClipboard from "../../utils/copyToClipboard";
 
-const pixKey = process.env.NEXT_PUBLIC_PIX_KEY;
-const pixReceiverName = process.env.NEXT_PUBLIC_PIX_NAME;
-const pixLocation = process.env.NEXT_PUBLIC_PIX_LOCATION;
+const pixKey = process.env.NEXT_PUBLIC_PIX_KEY || '';
+const pixReceiverName = process.env.NEXT_PUBLIC_PIX_NAME || '';
+const pixLocation = process.env.NEXT_PUBLIC_PIX_LOCATION || '';
 
-const PixModal = ({ isOpen, onClose, imageUrl, title, value }) => {
-  const pixQrCode = generatePixQrCode(pixKey, pixReceiverName, pixLocation, value);
+
+interface IPixModalProps {
+  isOpen: boolean,
+  onClose: () => void,
+  imageUrl: string,
+  title: string,
+  value: number
+}
+
+
+const PixModal: React.FC<IPixModalProps> = ({ isOpen, onClose, imageUrl, title, value }) => {
+  const pixQrCode = generatePixQrCode(pixKey, value, pixReceiverName, pixLocation);
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="md">

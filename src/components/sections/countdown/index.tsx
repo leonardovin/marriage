@@ -1,9 +1,6 @@
 import React from "react";
 import { Box, Heading, Flex, Text } from "@chakra-ui/react";
-import dynamic from "next/dynamic";
-
-// Importa Countdown do react-countdown de forma dinâmica para renderização no cliente
-const Countdown = dynamic(() => import("react-countdown"), { ssr: false });
+import Countdown from "react-countdown";
 
 const CountdownComponent = () => {
   const countdownDate = new Date("2025-05-31T00:00:00Z");

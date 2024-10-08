@@ -1,10 +1,17 @@
 // components/GiftCard.js
 
 import { Box, Image, Heading, Text, Flex, Center, Button } from "@chakra-ui/react";
-import { useState } from "react";
+import React, { useState } from "react";
 import PixModal from "../pix-modal";
 
-const GiftCard = ({ title, description, imageUrl, value }) => {
+interface IGiftCardProps {
+  title: string,
+  description: string,
+  imageUrl: string,
+  value: number
+}
+
+const GiftCard: React.FC<IGiftCardProps> = ({ title, description, imageUrl, value }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const openModal = () => setIsOpen(true);
@@ -14,7 +21,7 @@ const GiftCard = ({ title, description, imageUrl, value }) => {
     <Flex
       direction="column"
       justify="space-between"
-      p={1} // Reduzindo o padding para diminuir o espaço ocupado
+      p={1}
       borderWidth="1px"
       borderRadius="lg"
       bg="white"
