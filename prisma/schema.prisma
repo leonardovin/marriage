@@ -14,7 +14,7 @@ model User {
   image     String?
   guests    Guest[]  @relation("UserGuests")
   createdAt DateTime @default(now())
-  updateAt  DateTime @updatedAt
+  updatedAt DateTime @updatedAt
 }
 
 model Guest {
@@ -25,5 +25,5 @@ model Guest {
   adminId   Int?
   admin     User?    @relation("UserGuests", fields: [adminId], references: [id])
   createdAt DateTime @default(now())
-  updateAt  DateTime @updatedAt
+  updatedAt DateTime @updatedAt
 }
