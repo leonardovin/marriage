@@ -14,7 +14,7 @@ export default NextAuth({
   providers: [
     GoogleProvider({
       clientId: GOOGLE_CLIENT_ID,
-      clientSecret: GOOGLE_CLIENT_SECRET
+      clientSecret: GOOGLE_CLIENT_SECRET,
     })
   ],
   adapter: PrismaAdapter(new PrismaClient()),

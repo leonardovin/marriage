@@ -8,13 +8,15 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
+  id        Int       @id @default(autoincrement())
   name      String?
-  email     String   @unique
+  email     String    @unique
   image     String?
-  guests    Guest[]  @relation("UserGuests")
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  guests    Guest[]   @relation("UserGuests")
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  Account   Account[]
+  Session   Session[]
 }
 
 model Guest {
@@ -26,4 +28,33 @@ model Guest {
   admin     User?    @relation("UserGuests", fields: [adminId], references: [id])
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Account {
+  id                String   @id @default(cuid())
+  user              User     @relation(fields: [userId], references: [id])
+  userId            Int
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  user         User     @relation(fields: [userId], references: [id])
+  userId       Int
+  expires      DateTime
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }
