@@ -1,8 +1,16 @@
 import { Box, Heading, Center, Image } from "@chakra-ui/react";
 import GiftList from "../components/sections/gift-list";
 import Countdown from "../components/sections/countdown";
+import { useEffect, useState } from "react";
 
 const HomePage = () => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  // Use useEffect to set isMounted to true after the component mounts
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <>
       <Box bg="transparent" textAlign="center" py={8} pb={2}>
@@ -27,9 +35,13 @@ const HomePage = () => {
           Eduardo e Jéssica
         </Heading>
       </Box>
-      <Box pt={2}> {/* Responsive padding */}
-        <Countdown />
-      </Box>
+
+      {isMounted && ( // Only render Countdown after the component has mounted
+        <Box pt={2}>
+          <Countdown />
+        </Box>
+      )}
+
       <Box py={8}>
         <GiftList />
       </Box>
@@ -37,4 +49,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage
+export default HomePage;

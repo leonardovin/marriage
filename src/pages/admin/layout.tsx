@@ -14,7 +14,7 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ children }) => {
 
   useEffect(() => {
     if (status === "unauthenticated") {
-      router.push('/auth'); // Redirect to the authentication page
+      router.push('/auth/signin'); // Redirect to the authentication page
     }
   }, [status, router]);
 
