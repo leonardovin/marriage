@@ -4,6 +4,9 @@ import { AppProps } from "next/app";
 import theme from "../theme";
 import MainLayout from "./layout";
 import { SessionProvider } from "next-auth/react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient()
 
 /**
  *
@@ -11,13 +14,15 @@ import { SessionProvider } from "next-auth/react";
  */
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ChakraProvider theme={theme}>
-      <SessionProvider>
-        <MainLayout>
-          <Component {...pageProps} />
-        </MainLayout>
-      </SessionProvider>
-    </ChakraProvider>
+    <QueryClientProvider client={queryClient}>
+      <ChakraProvider theme={theme}>
+        <SessionProvider>
+          <MainLayout>
+            <Component {...pageProps} />
+          </MainLayout>
+        </SessionProvider>
+      </ChakraProvider>
+    </QueryClientProvider>
   );
 }
 
